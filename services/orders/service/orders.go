@@ -10,7 +10,7 @@ import (
 var ordersDb = make([]*orders.Order, 0)
 
 type OrderService struct {
-	// store
+	// TODO: add mongo store
 }
 
 func NewOrderService() *OrderService {
@@ -23,6 +23,13 @@ func (s *OrderService) CreateOrder(ctx context.Context, order *orders.Order) err
 }
 
 func (s *OrderService) GetOrders(ctx context.Context, customerID int32) []*orders.Order {
-	log.Println("this method is getting called", customerID)
-	return ordersDb
+	log.Println(customerID)
+	customerOrders := make([]*orders.Order, 0)
+	for _, item := range ordersDb {
+		if item.CustomerID == customerID {
+			log.Println("matched")
+			customerOrders = append(customerOrders, item)
+		}
+	}
+	return customerOrders
 }

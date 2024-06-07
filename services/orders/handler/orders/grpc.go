@@ -2,6 +2,7 @@ package handler
 
 import (
 	"context"
+	"math/rand"
 
 	"github.com/shammianand/oms/services/common/genproto/orders"
 	"github.com/shammianand/oms/services/orders/types"
@@ -32,11 +33,12 @@ func (h *OrdersGrpcHandler) GetOrders(ctx context.Context, req *orders.GetOrders
 }
 
 func (h *OrdersGrpcHandler) CreateOrder(ctx context.Context, req *orders.CreateOrderRequest) (*orders.CreateOrderResponse, error) {
+
 	order := &orders.Order{
-		OrderID:    42,
-		CustomerID: 2,
-		ProductID:  1,
-		Quantity:   10,
+		OrderID:    int32(rand.Intn(10000)),
+		CustomerID: req.CustomerID,
+		ProductID:  req.ProductID,
+		Quantity:   req.ProductID,
 	}
 
 	err := h.ordersService.CreateOrder(ctx, order)
