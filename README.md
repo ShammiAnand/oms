@@ -24,3 +24,7 @@
 ### gRPC Server
 
 - communicates with the gRPC connection exposed by Order service at port 9000
+
+### TODO
+
+- think about adding some persistent storage

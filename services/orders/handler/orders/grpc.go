@@ -38,7 +38,7 @@ func (h *OrdersGrpcHandler) CreateOrder(ctx context.Context, req *orders.CreateO
 		OrderID:    int32(rand.Intn(10000)),
 		CustomerID: req.CustomerID,
 		ProductID:  req.ProductID,
-		Quantity:   req.ProductID,
+		Quantity:   req.Quantity,
 	}
 
 	err := h.ordersService.CreateOrder(ctx, order)

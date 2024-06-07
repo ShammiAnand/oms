@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/sikozonpc/common/orders";
+option go_package = "github.com/shammianand/oms/common/genproto/orders";
 
 service OrderService {
   rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse) {}
