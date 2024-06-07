@@ -10,15 +10,17 @@
 
 ### API Server
 
+#### Un-Authenticated Routes
+
+- Kitchen service exposes `POST /login` to create jwt token for already registered users
+  - this token will be passed in `Authorization` header for all authenticated routes
+- Kitchen service exposes `POST /signup` to create user
+
+#### Authenticated Routes
+
 - Kitchen service exposes `POST /orders` to create order
-- Kitchen service exposes `GET /orders/{customerID}` to list all orders for a customer ID
-  - ideally the above two endpoints should have authentication
+- Kitchen service exposes `GET /orders` to list all orders for a customer ID
 
 ### gRPC Server
 
 - communicates with the gRPC connection exposed by Order service at port 9000
-
-TODOs:
-
-1. add database (mongo?)
-2. add jwt auth -- login / signup routes
